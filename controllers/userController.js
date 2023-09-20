@@ -33,6 +33,18 @@ const userController = {
     }
   },
 
+  // create user
+
+  async createUser(req, res) {
+    try {
+      const dbUserData = await User.create(req.body);
+      res.json(dbUserData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+
   // update user
 
   async updateUser(req, res) {
@@ -92,4 +104,4 @@ async removeFriend(req, res) {
 },
 };
 
-module.exports = userController
+module.exports = userController;
